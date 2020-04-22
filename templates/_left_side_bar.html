@@ -1,0 +1,55 @@
+{% load static %}
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="profile-element" style="height: 65px">
+                    <img alt="logo" height="60" width="220" style="margin-right: 5px" src="{% static 'images/mindsense.png' %}"/>
+                </div>
+            </li>
+            <li id="index">
+                <a href="">
+                    <i class="fa fa-dashboard" style="width: 14px"></i> <span class="nav-label">工作空间</span>
+                    <span class="label label-info pull-right"></span>
+                </a>
+            </li>
+            {% if request.session.user_role == 2 %}
+            <li id="users">
+                <a href="#">
+                    <i class="fa fa-group" style="width: 14px"></i> <span class="nav-label">用户管理</span><span
+                        class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level active">
+                    <li id="user"><a href="{% url 'user:user_lists' %}">用户列表</a></li>
+                </ul>
+            </li>
+            {% endif %}
+
+            <li id="vendors">
+                <a>
+                    <i class="fa fa-home" style="width: 14px"></i> <span class="nav-label">策略管理</span><span
+                        class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li id="vendor-list"><a href="">策略列表</a></li>
+                </ul>
+            </li>
+
+            {% if request.session.user_role == 2 %}
+            <li id="settings">
+                <a href="{% url 'user:machine_list' %}">
+                    <i class="fa fa-gears"></i> <span class="nav-label">回测机设置</span><span
+                        class="label label-info pull-right"></span>
+                </a>
+            </li>
+            {% endif %}
+
+            {#<script>#}
+            {#$(document).ready(function () {#}
+            {#    var current_org = '{{ CURRENT_ORG.name }}';#}
+            {#    console.log(current_org);})#}
+            {#</script>#}
+
+        </ul>
+    </div>
+</nav>

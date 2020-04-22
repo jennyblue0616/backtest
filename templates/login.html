@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{%  static "css/cover.css"%}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <div class="div-form">
+                    <h2 class="page-title" style="color: #1E0FBE">庙算</h2>
+                    <h2 class="page-title" style="color: #1E0FBE">MindSense</h2>
+                    <form action="/login/" method="post">
+                        {% csrf_token %}
+                        <div class="form-container" >
+                            <div class="form-group1">
+                                <input class="form-control" name="username" type="text" placeholder="输入用户名" style="float:left;">
+
+                                <input class="form-control" name="password" type="password" placeholder="输入密码" style="margin-top:20px; float:left;">
+                            </div>
+                            <div class="form-group2">
+                                <button class="btn btn-primary btn-block" style="margin-top:20px; float:left;"> 登录</button>
+                            </div>
+                                {% if msg %}
+                                <div class="alert alert-danger" role="alert">{{ msg }}</div>
+                                {% endif %}
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>© 2020 Copyright for CYANSENSE </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

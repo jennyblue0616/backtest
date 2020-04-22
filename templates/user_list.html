@@ -1,0 +1,58 @@
+{% extends '_base_list.html' %}
+
+{% block table_search %}{% endblock %}
+
+
+{% block table_container %}
+<div class="uc pull-left  m-r-5" style="margin-bottom: 5px;">
+    <a href="{% url 'user:user_create' %}" class="btn btn-sm btn-primary"> 新增用户 </a>
+</div>
+
+
+<div>
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>人员名称</th>
+            <th>角色</th>
+            <th>状态</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.user_name }}</td>
+
+            <td>{{ user.get_role_display }}</td>
+
+            {% if user.is_delete %}
+                <td>冻结</td>
+                {% else %}
+                <td>正常</td>
+            {% endif %}
+
+            <td>{{ user.date_created }}</td>
+
+            <td>
+                <a href="{% url 'user:user_update' pk=user.id %}" class="btn btn-xs btn-info">修改</a>
+                <a href="{% url 'user:user_state' pk=user.id %}" class="btn btn-xs btn-danger">冻结</a>
+
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block custom_foot_js %}
+<script>
+
+    $(document).ready(function () {
+        mindsense.initStaticTable('table');
+    })
+</script>
+{% endblock %}
+
+

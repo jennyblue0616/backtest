@@ -1,0 +1,31 @@
+{% extends '_base_create_update.html' %}
+{% load static %}
+{% load bootstrap3 %}
+
+
+{% block form %}
+<form id="groupForm" method="post" class="form-horizontal">
+    {% csrf_token %}
+
+    {% bootstrap_field form.user_name layout="horizontal" %}
+    {% if action == '新增用户' %}
+    {% bootstrap_field form.password layout="horizontal" %}
+    {% endif %}
+
+    {% bootstrap_field form.role layout="horizontal" %}
+
+    <div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <button class="btn btn-default" type="reset">重置</button>
+            <button id="submit_button" class="btn btn-primary" type="submit">提交</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+
+{% block custom_foot_js %}
+<script type="text/javascript">
+</script>
+{% endblock %}
